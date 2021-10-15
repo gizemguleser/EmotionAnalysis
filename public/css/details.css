@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../img/details-bg.png) center center no-repeat fixed;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #605555;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  box-shadow: 0px 13px 21px 10px rgba(0, 0, 0, 0.28);
+  border-radius: 49px;
+}
+
+.left {
+  width: 60%;
+  height: 80%;
+  margin: auto;
+}
+
+.cameraContainer {
+  position: relative;
+  width: 72%;
+  height: 75%;
+  margin: 0 auto;
+}
+
+.camera {
+  width: 100%;
+  height: 100%;
+}
+
+.cameraPlaceholder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 26px;
+}
+
+.warning {
+  display: flex;
+  width: 80%;
+  font-size: 24px;
+  margin: 50px auto 0 auto;
+}
+
+.warning-txt {
+  margin-left: 20px;
+  color: #dbdbdb;
+}
+
+#errorMsg {
+  color: #8a0000;
+}
+
+.right {
+  width: 40%;
+  height: 80%;
+  margin: auto 0;
+  padding: 0 45px;
+  border-left: 3px solid #8f8f8f;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+fieldset {
+  border: none;
+}
+
+.input-title {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+  margin-right: 2px;
+}
+
+.gender > label {
+  font-size: 26px;
+}
+
+.gender > label:first-of-type {
+  margin-right: 90px;
+}
+
+.age > input {
+  width: 190px;
+  height: 27px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.permission > .input-title {
+  line-height: 45px;
+  margin-bottom: 12px;
+}
+
+.permission > label {
+  font-size: 18px;
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-right: 7px;
+}
+
+.btn {
+  width: 350px;
+  height: 70px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #885154 -24.36%, #475f94 135.9%);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1400px) {
+  .warning,
+  .cameraPlaceholder {
+    font-size: 20px;
+  }
+  .input-title {
+    font-size: 26px;
+    margin-bottom: 3px;
+  }
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+  }
+  .gender > label {
+    font-size: 20px;
+  }
+  .gender > label:first-of-type {
+    margin-right: 70px;
+  }
+  .permission > .input-title {
+    line-height: 30px;
+  }
+  .permission > label {
+    display: flex;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .btn {
+    width: 80%;
+    height: 50px;
+    font-size: 25px;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1200px) {
+  .card {
+    width: 95%;
+    height: 90%;
+  }
+  .left {
+    width: 50%;
+  }
+  .cameraContainer {
+    width: 100%;
+    height: 60%;
+  }
+  .warning {
+    width: 100%;
+    margin-top: 70px;
+  }
+  .right {
+    width: 43%;
+    padding: 0 20px;
+  }
+  .gender > label {
+    display: inline-block;
+  }
+  input[type="checkbox"] {
+    width: 27px;
+    height: 27px;
+  }
+  .btn {
+    width: 90%;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 768px) {
+  .btn {
+    font-size: 22px;
+  }
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 576px) {
+  body {
+    min-height: 820px;
+  }
+  .card {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    flex-direction: column;
+    height: auto;
+    margin-top: 2vh;
+    padding: 3vh 0;
+    border-radius: 30px;
+  }
+  .left {
+    width: 95%;
+    height: auto;
+    margin-bottom: 7vh;
+  }
+  .cameraContainer {
+    width: 85%;
+    height: 250px;
+  }
+  .cameraPlaceholder {
+    font-size: 16px;
+  }
+  .warning {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .warning-txt {
+    margin-left: 10px;
+  }
+  .right {
+    width: 100%;
+    margin: 0 auto;
+    height: 400px;
+    border: none;
+  }
+  .input-title {
+    font-size: 23px;
+  }
+  .gender > label:first-of-type {
+    margin-right: 70px;
+  }
+  .permission > .input-title {
+    line-height: 25px;
+  }
+}

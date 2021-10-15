@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/commercials.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Video</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Commercial -->
+      <div class="left">
+        <iframe id="commercial-iframe" src="" frameborder="0" class="commercial"></iframe>
+        <p id="upload-txt" class="uploadTxt"></p>
+      </div>
+      <!-- Camera and Emotion Buttons -->
+      <div class="right">
+        <div class="cameraContainer">
+          <video class="camera" autoplay playsinline></video>
+        </div>
+        <div id="emotionBtns" class="emotionButtons">
+          <button id="suprising" class="emotion-btn">Şaşırtıcı</button>
+          <button id="joy" class="emotion-btn">Mutluluk</button>
+          <button id="scary" class="emotion-btn">Korku</button>
+          <button id="disgusting" class="emotion-btn">Tiksinme</button>
+          <button id="emotional" class="emotion-btn">Duygusal</button>
+        </div>
+        <button id="next-btn" class="next-btn">Sonraki &ensp;></button>
+      </div>
+    </div>
+    <script src="js/commercials.js"></script>
+  </body>
+</html>

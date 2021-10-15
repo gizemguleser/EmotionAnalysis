@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/details.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bilgiler</title>
+  </head>
+  <body>
+    <!-- Detail Card -->
+    <div class="card">
+      <!-- Left Part -->
+      <div class="left">
+        <!-- Camera -->
+        <div class="cameraContainer">
+          <p id="camera-txt" class="cameraPlaceholder">
+            Lütfen Kamera Kullanımına izin verin.<br />
+            <span id="errorMsg"></span>
+          </p>
+          <video class="camera" autoplay playsinline></video>
+        </div>
+        <div class="warning">
+          <!-- Error Message If exist-->
+          <img src="img/warning-icon.svg" alt="!" class="warning-icon" />
+          <p class="warning-txt">
+            Kameranızın çalıştığından ve yüzünüzün tam olarak göründüğünden emin olun.
+          </p>
+        </div>
+      </div>
+      <!-- Right Part -->
+      <div class="right">
+        <form id="userDetails">
+          <!-- Gender -->
+          <fieldset class="gender">
+            <h2 class="input-title">Cinsiyetiniz Nedir?</h2>
+            <label>
+              <input type="radio" name="gender" id="female" value="female" required />
+              <label for="female">Kadın</label>
+            </label>
+            <label>
+              <input type="radio" name="gender" id="male" value="male" />
+              <label for="male">Erkek</label>
+            </label>
+          </fieldset>
+          <!-- Age -->
+          <fieldset class="age">
+            <h2 class="input-title">Kaç Yaşındasınız?</h2>
+            <input type="number" name="age" id="age" min="5" max="100" required />
+          </fieldset>
+          <!-- Permission -->
+          <fieldset class="permission">
+            <h2 class="input-title">Videonuzu kullanmamıza izin veriyor musunuz?</h2>
+            <label>
+              <input type="checkbox" name="permission" id="permission" required />
+              <label for="permission">
+                Sadece bu proje için bilimsel amaçla kullanılacaktır.
+              </label>
+            </label>
+          </fieldset>
+          <!-- Submit  -->
+          <button id="start-btn" type="submit" class="btn">İzlemeye Başla</button>
+        </form>
+
+        <button id="turnOnCamera" style="display: none">Turn On camera</button>
+      </div>
+    </div>
+    <script src="js/details.js"></script>
+  </body>
+</html>
