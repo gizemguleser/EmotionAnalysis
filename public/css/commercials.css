@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #686868;
+  background-color: #424242;
   font-family: "Poppins", sans-serif;
 }
 
@@ -36,6 +36,7 @@ body {
   font-size: 50px;
   color: #ffe8da;
   font-weight: bold;
+  font-family: "Poppins";
 }
 
 .commercial {
@@ -73,6 +74,13 @@ body {
   width: 65%;
   height: 45px;
   margin-bottom: 30px;
+  border: none;
+  background-color: #202020;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: "Poppins";
 }
 
 .next-btn {

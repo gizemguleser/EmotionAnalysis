@@ -185,7 +185,7 @@ function onYouTubeIframeAPIReady() {
 // Start/Stop Record With Commercial Status
 function onPlayerStateChange(status) {
   if (status.data == 1 && !isRecording) {
-    startRecord();
+    // startRecord();
     isRecording = true;
     // Show Emotion Buttons When Commercial Start Playing
     emotionBtnsContainer.style.display = "flex";
@@ -194,7 +194,7 @@ function onPlayerStateChange(status) {
   }
   // Save Recorded Video After Commercial End
   else if (status.data == 0) {
-    saveVideo();
+    // saveVideo();
     isRecording = false;
     commercialLeft--;
     // Hide Emotion Buttons
