@@ -7,14 +7,14 @@ document.getElementsByTagName("head")[0].appendChild(script);
 // Put variables in global scope to make them available to the browser console.
 let mediaRecorder;
 let isRecording = false;
-let commercialLeft = 3; // Number of Commercial
+let commercialLeft = 4; // Number of Commercial
 let recordedVideoName;
 const videoParts = [];
 const emotionTimes = {};
 
 const iframeMain = document.getElementById("commercial-iframe");
 
-alert("Duyguyu hissettiğiniz and butona basınız.");
+alert("Duyguyu hissettiğiniz zaman butona basınız.");
 
 // Video Constraints
 const constraints = (window.constraints = {
@@ -113,19 +113,28 @@ function postVideoToServer(formData) {
 }
 
 // Commercials Youtube IDs
-const videoIDs = {
-  SiseCam: "5uO_D169BfA",
-  Bonus: "5bxAUXmpETg",
-  Ziraat: "bm63JYzlGfA",
-  Mcdonalds: "895joio5svE",
-  DrOetker: "AxgE5ojwKto",
+const suprisingIDs = {
+  Ulker: "_COqz11UiLg",
+  Fiat: "uQm05ngHbpo",
+  Ps3: "L0ET0gSewYM",
+  Renault: "6rEyLw2AGvw",
+};
+const joyIDs = {
+  EvianBaby: "ikuiByrF6rs",
+  Camlica: "jJBjjtxpi80",
   Opet: "54HUz14LTFk",
   JohnWest: "gP92j-uEnps",
-  Pepsi: "GyY15Jkkg2A",
+};
+const disgustingIDs = {
+  IceCream: "erh2ngRZxs0",
+  Teeth: "OoiryG6dJXY",
+  Parodontax: "OE1BSrMldsM",
+  Koroplast: "sAunmHlH8ZU",
+};
+const emotionalIDs = {
   Turkcell: "Y5wW-AprkEE",
-  Thy: "oSD0YigRW3o",
-  CarCrash: "YkRg2MW0fo0",
-  Sahibinden: "FVPK3m14tOs",
+  SiseCam: "5uO_D169BfA",
+  Bonus: "5bxAUXmpETg",
 };
 
 // Youtube Player Parameters
@@ -133,16 +142,26 @@ const videoIDs = {
 const videoParameters =
   "?enablejsapi=1&modestbranding=1&showinfo=0&rel=0&disablekb=1&iv_load_policy=3&fs=0&color=white&controls=0";
 
-// Get Random Commercial ID From 'videoIDs'
-function getRandomCommercialID() {
+// User will Watch 2 Commercials for Every Category
+// TODO
+function getCommercialCategory() {
+  if (commercialLeft == 4) return suprisingIDs;
+  if (commercialLeft == 3) return joyIDs;
+  if (commercialLeft == 2) return disgustingIDs;
+  if (commercialLeft == 1) return emotionalIDs;
+}
+
+// Get Random Commercial's Youtube ID
+function getRandomCommercialID(category) {
   // Get All Commercial Names
-  const commercialNames = Object.keys(videoIDs);
+  // const commercialNames = Object.keys(videoIDs);
+  const commercialNames = Object.keys(category);
   // Select Random Commercial Name
   const randomCommercialName = commercialNames[Math.floor(Math.random() * commercialNames.length)];
   // Get Selected Commercial ID with its Name
-  const randomCommercialID = videoIDs[randomCommercialName];
+  const randomCommercialID = category[randomCommercialName];
   // Delete Selected Commercial, the Same Commercial Will Not be Shown Again
-  delete videoIDs[randomCommercialName];
+  delete category[randomCommercialName];
 
   recordedVideoName = randomCommercialName;
   return randomCommercialID;
@@ -150,7 +169,11 @@ function getRandomCommercialID() {
 
 // Generate Video URL
 function videoURL() {
-  return "http://www.youtube.com/embed/" + getRandomCommercialID() + videoParameters;
+  return (
+    "http://www.youtube.com/embed/" +
+    getRandomCommercialID(getCommercialCategory()) +
+    videoParameters
+  );
 }
 
 // First Random Commercial
