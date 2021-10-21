@@ -44,7 +44,6 @@ function startRecord() {
   // Clear for New Video
   clearSavedVideoParts();
 
-  console.log("yeni kayit basladi");
   // Record
   mediaRecorder = new MediaRecorder(stream);
   mediaRecorder.start(1000);
@@ -104,7 +103,6 @@ function postVideoToServer(formData) {
     processData: false,
     contentType: false,
   }).done(function () {
-    console.log("Video Posted.");
     if (commercialLeft == 0) {
       uploadTxt.innerHTML =
         "Video Aktarıldı. Katılımınız için teşekkürler.<br>Sekmeyi Kapatabilirsiniz.";
