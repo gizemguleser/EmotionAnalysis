@@ -170,7 +170,7 @@ function getRandomCommercialID(category) {
 // Generate Video URL
 function videoURL() {
   return (
-    "http://www.youtube.com/embed/" +
+    "https://www.youtube.com/embed/" +
     getRandomCommercialID(getCommercialCategory()) +
     videoParameters
   );
