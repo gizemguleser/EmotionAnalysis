@@ -144,15 +144,14 @@ const videoParameters =
 // TODO
 function getCommercialCategory() {
   if (commercialLeft == 4) return suprisingIDs;
-  if (commercialLeft == 3) return joyIDs;
+  if (commercialLeft == 3) return emotionalIDs;
   if (commercialLeft == 2) return disgustingIDs;
-  if (commercialLeft == 1) return emotionalIDs;
+  if (commercialLeft == 1) return joyIDs;
 }
 
 // Get Random Commercial's Youtube ID
 function getRandomCommercialID(category) {
-  // Get All Commercial Names
-  // const commercialNames = Object.keys(videoIDs);
+  // Get All Commercial Names in Given Category
   const commercialNames = Object.keys(category);
   // Select Random Commercial Name
   const randomCommercialName = commercialNames[Math.floor(Math.random() * commercialNames.length)];

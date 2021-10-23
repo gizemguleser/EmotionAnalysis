@@ -99,6 +99,11 @@ input[type="radio"] {
   margin-right: 2px;
 }
 
+input[type="number"] {
+  padding-left: 5px;
+  border: none;
+}
+
 .gender > label {
   font-size: 26px;
 }
