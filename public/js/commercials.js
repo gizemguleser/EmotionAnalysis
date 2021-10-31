@@ -7,7 +7,7 @@ document.getElementsByTagName("head")[0].appendChild(script);
 // Put variables in global scope to make them available to the browser console.
 let mediaRecorder;
 let isRecording = false;
-let commercialLeft = 4; // Number of Commercial
+let commercialLeft = 10; // Number of Commercial
 let recordedVideoName;
 const videoParts = [];
 const emotionTimes = {};
@@ -112,7 +112,7 @@ function postVideoToServer(formData) {
 
 // Commercials Youtube IDs
 const suprisingIDs = {
-  Ulker: "_COqz11UiLg",
+  Ulker: "hbcSNatJTWo",
   Fiat: "uQm05ngHbpo",
   Ps3: "L0ET0gSewYM",
   Renault: "6rEyLw2AGvw",
@@ -122,6 +122,11 @@ const joyIDs = {
   Camlica: "jJBjjtxpi80",
   Opet: "54HUz14LTFk",
   JohnWest: "gP92j-uEnps",
+};
+const scaryIDs = {
+  Tire: "54U6BgYuJMY",
+  DirtDevil: "aDaupp76r60",
+  Audi: "02eJUk7Mbsg",
 };
 const disgustingIDs = {
   IceCream: "erh2ngRZxs0",
@@ -141,12 +146,12 @@ const videoParameters =
   "?enablejsapi=1&modestbranding=1&showinfo=0&rel=0&disablekb=1&iv_load_policy=3&fs=0&color=white&controls=0";
 
 // User will Watch 2 Commercials for Every Category
-// TODO
 function getCommercialCategory() {
-  if (commercialLeft == 4) return suprisingIDs;
-  if (commercialLeft == 3) return emotionalIDs;
-  if (commercialLeft == 2) return disgustingIDs;
-  if (commercialLeft == 1) return joyIDs;
+  if (commercialLeft <= 2) return scaryIDs;
+  if (commercialLeft <= 4) return disgustingIDs;
+  if (commercialLeft <= 6) return joyIDs;
+  if (commercialLeft <= 8) return emotionalIDs;
+  if (commercialLeft <= 10) return suprisingIDs;
 }
 
 // Get Random Commercial's Youtube ID
