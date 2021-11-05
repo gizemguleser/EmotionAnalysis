@@ -55,13 +55,13 @@ const s3 = new S3({
 });
 
 // Post JSON Data to AWS S3
-async function uploadJSON(folderName, filename, userDetails) {
+async function uploadJSON(folderName, filename, data) {
   try {
     await s3
       .putObject({
         Bucket: bucketName,
         Key: folderName + "/" + filename,
-        Body: JSON.stringify(userDetails),
+        Body: JSON.stringify(data),
         ContentType: "application/json; charset=utf-8",
       })
       .promise();
@@ -90,8 +90,9 @@ const uploadS3 = multer({
 app.post("/userDetails", async function (req, res) {
   const userUniqueID = uuid.v4();
 
+  // TODO
   // Send Data to AWS S3
-  await uploadJSON(userUniqueID, "userDetails.json", req.body);
+  // await uploadJSON(userUniqueID, "userDetails.json", req.body);
 
   // Send WebPage Url For Redirect Client
   return res.send("/commercials?d=" + userUniqueID);
@@ -105,5 +106,13 @@ app.post("/upload", uploadS3.single("video"), async function (req, res) {
 
   // Send Emotion Times to AWS S3
   await uploadJSON(req.body.userUniqueID, emotionFileName, emotions);
-  return res.send("Video Uploaded");
+  return res.send(200, "Video Uploaded");
+});
+
+// Get Survey From Client
+app.post("/survey", async function (req, res) {
+  const surveyName = req.body.surveyName;
+
+  await uploadJSON(req.body.userUniqueID, surveyName, req.body.survey);
+  return res.send(200);
 });

@@ -78,6 +78,7 @@ function handleForm(e) {
     age: age,
   };
 
+  // TODO
   $.ajax({
     type: "POST",
     url: "/userDetails",

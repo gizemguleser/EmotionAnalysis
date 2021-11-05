@@ -84,21 +84,39 @@ body {
   cursor: pointer;
 }
 
-.next-btn {
+.watchedBefore {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 60px;
-  font-size: 30px;
-  color: white;
-  background: linear-gradient(90deg, rgba(54, 39, 30, 0.76) -24.36%, rgba(15, 25, 47, 0.66) 135.9%);
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+  width: 93%;
+  background-color: #84bfff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.watched-txt {
+  font-size: 19px;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.watched-btn {
+  width: 30%;
+  padding: 10px 0;
   border: none;
+  border-radius: 5px;
+  background-color: #424242;
+  color: white;
+  font-size: 17px;
+  font-family: "Poppins";
   cursor: pointer;
-  display: none;
 }
 
 /* X-Large devices (more than 1400px) */
@@ -138,12 +156,17 @@ body {
     width: 100%;
     margin-right: 20px;
   }
-  .next-btn {
+  .watchedBefore {
     right: 5%;
     left: auto;
     top: 50%;
     transform: translateY(-50%);
-    width: 30%;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+  }
+  .watched-txt {
+    font-size: 25px;
   }
 }
 
@@ -181,9 +204,8 @@ body {
   .emotion-btn {
     flex: 1 0 33%;
   }
-  .next-btn {
-    width: 40%;
-    font-size: 22px;
+  .watched-txt {
+    font-size: 20px;
   }
   .uploadTxt {
     font-size: 26px;

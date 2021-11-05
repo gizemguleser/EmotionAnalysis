@@ -7,10 +7,11 @@ document.getElementsByTagName("head")[0].appendChild(script);
 // Put variables in global scope to make them available to the browser console.
 let mediaRecorder;
 let isRecording = false;
-let commercialLeft = 10; // Number of Commercial
+let commercialLeft = 5; //TODO Number of Commercial
 let recordedVideoName;
 const videoParts = [];
 const emotionTimes = {};
+const watchedBefore = {};
 
 const iframeMain = document.getElementById("commercial-iframe");
 
@@ -30,6 +31,9 @@ function handleSuccess(stream) {
 
   // Make Stream Available to Browser Console
   window.stream = stream;
+
+  //TODO
+  window.watchedBefore = watchedBefore;
 }
 
 // Init User Camera
@@ -110,6 +114,29 @@ function postVideoToServer(formData) {
   });
 }
 
+// TODO test
+function getSurveyData(survey) {
+  const formData = new FormData();
+  formData.append("userUniqueID", getUserUniqueID());
+  formData.append("surveyName", "Have_User_Watched_Before");
+  formData.append("survey", JSON.stringify(survey));
+  return formData;
+}
+
+// Post Survey To Server
+function postSurveyToServer(surveyData) {
+  $.ajax({
+    type: "POST",
+    url: "/survey",
+    data: surveyData,
+    processData: false,
+    contentType: false,
+    success: function () {
+      console.log("anket yollandi");
+    },
+  });
+}
+
 // Commercials Youtube IDs
 const suprisingIDs = {
   Ulker: "hbcSNatJTWo",
@@ -153,20 +180,23 @@ function getCommercialCategory() {
   if (commercialLeft <= 8) return emotionalIDs;
   if (commercialLeft <= 10) return suprisingIDs;
 }
-
+index = 1;
 // Get Random Commercial's Youtube ID
+//TODO
 function getRandomCommercialID(category) {
   // Get All Commercial Names in Given Category
-  const commercialNames = Object.keys(category);
+  // const commercialNames = Object.keys(category);
   // Select Random Commercial Name
-  const randomCommercialName = commercialNames[Math.floor(Math.random() * commercialNames.length)];
+  // const randomCommercialName = commercialNames[Math.floor(Math.random() * commercialNames.length)];
   // Get Selected Commercial ID with its Name
-  const randomCommercialID = category[randomCommercialName];
+  // const randomCommercialID = category[randomCommercialName];
   // Delete Selected Commercial, the Same Commercial Will Not be Shown Again
-  delete category[randomCommercialName];
+  // delete category[randomCommercialName];
 
-  recordedVideoName = randomCommercialName;
-  return randomCommercialID;
+  // recordedVideoName = randomCommercialName;
+  recordedVideoName = "test" + index++;
+  // return randomCommercialID;
+  return "TK4N5W22Gts";
 }
 
 // Generate Video URL
@@ -183,8 +213,6 @@ iframeMain.src = videoURL();
 
 // Show Next Commercial to User
 function showNextVideo() {
-  // Hide Next Video Button
-  nextBtn.style.display = "none";
   // Update Commercial Source With Random Generated URL
   player.getIframe().src = videoURL();
   onYouTubeIframeAPIReady();
@@ -210,7 +238,8 @@ function onYouTubeIframeAPIReady() {
 // Start/Stop Record With Commercial Status
 function onPlayerStateChange(status) {
   if (status.data == 1 && !isRecording) {
-    startRecord();
+    // TODO
+    // startRecord();
     isRecording = true;
     // Show Emotion Buttons When Commercial Start Playing
     emotionBtnsContainer.style.display = "flex";
@@ -219,19 +248,14 @@ function onPlayerStateChange(status) {
   }
   // Save Recorded Video After Commercial End
   else if (status.data == 0) {
-    saveVideo();
+    // TODO
+    // saveVideo();
     isRecording = false;
     commercialLeft--;
     // Hide Emotion Buttons
     emotionBtnsContainer.style.display = "none";
-    // Show the Button of Next Video if This Video is Not Last
-    if (commercialLeft == 0) {
-      iframeMain.style.display = "none";
-      uploadTxt.innerHTML = "Video Kaydı Aktarılıyor...<br>Lütfen Bekleyin";
-      uploadTxt.style.display = "block";
-    } else {
-      nextBtn.style.display = "block";
-    }
+    // Show 'Have You Watched Before' Survey
+    watchedSurvey.style.display = "block";
   }
 }
 
@@ -257,11 +281,29 @@ function handleEmotionBtns(btn) {
   }
 }
 
-const emotionBtnsContainer = document.getElementById("emotionBtns");
-const nextBtn = document.getElementById("next-btn");
-nextBtn.addEventListener("click", () => showNextVideo());
+function handleWatchedBtns(haveUserWatchedBefore) {
+  watchedBefore[recordedVideoName] = haveUserWatchedBefore;
+  // Hide 'Have You Watched Before' Survey
+  watchedSurvey.style.display = "none";
+  // Show next commercials if any
+  if (commercialLeft != 0) showNextVideo();
+  else {
+    iframeMain.style.display = "none";
+    uploadTxt.innerHTML = "Video Kaydı Aktarılıyor...<br>Lütfen Bekleyin";
+    uploadTxt.style.display = "block";
+    //TODO Post Survey To Server
+    // postSurveyToServer(getSurveyData(watchedBefore));
+  }
+}
+
+// 'Have User Watched Commercial Before' Buttons
+const watchedSurvey = document.getElementById("watchedSurvey");
+document.getElementById("yes-btn").addEventListener("click", () => handleWatchedBtns(true));
+document.getElementById("no-btn").addEventListener("click", () => handleWatchedBtns(false));
+
 const uploadTxt = document.getElementById("upload-txt");
 
+const emotionBtnsContainer = document.getElementById("emotionBtns");
 const emotionBtns = document.querySelectorAll(".emotion-btn");
 // addEventListener for Every Emotion Buttons
 for (let i = 0; i < emotionBtns.length; i++) {
