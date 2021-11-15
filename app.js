@@ -21,6 +21,7 @@ app.listen(port, () => console.info(`Listening on port ${port}`));
 
 // Parse JSON Bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Static Files
 app.use(express.static("public"));
@@ -90,9 +91,8 @@ const uploadS3 = multer({
 app.post("/userDetails", async function (req, res) {
   const userUniqueID = uuid.v4();
 
-  // TODO
   // Send Data to AWS S3
-  // await uploadJSON(userUniqueID, "userDetails.json", req.body);
+  await uploadJSON(userUniqueID, "userDetails.json", req.body);
 
   // Send WebPage Url For Redirect Client
   return res.send("/commercials?d=" + userUniqueID);
@@ -106,13 +106,11 @@ app.post("/upload", uploadS3.single("video"), async function (req, res) {
 
   // Send Emotion Times to AWS S3
   await uploadJSON(req.body.userUniqueID, emotionFileName, emotions);
-  return res.send(200, "Video Uploaded");
+  return res.status(200).send("Video Uploaded");
 });
 
 // Get Survey From Client
 app.post("/survey", async function (req, res) {
-  const surveyName = req.body.surveyName;
-
-  await uploadJSON(req.body.userUniqueID, surveyName, req.body.survey);
-  return res.send(200);
+  await uploadJSON(req.body.userUniqueID, req.body.surveyName, req.body);
+  return res.status(200).send("Survey Uploaded");
 });
