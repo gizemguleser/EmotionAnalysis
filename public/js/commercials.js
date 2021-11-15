@@ -7,7 +7,7 @@ document.getElementsByTagName("head")[0].appendChild(script);
 // Put variables in global scope to make them available to the browser console.
 let mediaRecorder;
 let isRecording = false;
-let commercialLeft = 5; //TODO Number of Commercial
+let commercialLeft = 1; //TODO Number of Commercial
 let recordedVideoName;
 const videoParts = [];
 const emotionTimes = {};
@@ -74,6 +74,11 @@ function stopRecording() {
   mediaRecorder.stop();
 }
 
+// Turn Off User Camera
+function turnOffUserCamera() {
+  stream.getTracks()[0].stop();
+}
+
 function getUserUniqueID() {
   // Get Name of User Directory From URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -109,7 +114,7 @@ function postVideoToServer(formData) {
   }).done(function () {
     if (commercialLeft == 0) {
       uploadTxt.innerHTML =
-        "Video Aktarıldı. Katılımınız için teşekkürler.<br>Sekmeyi Kapatabilirsiniz.";
+        "Veriler Aktarıldı. Katılımınız için teşekkürler.<br>Sekmeyi Kapatabilirsiniz.";
     }
   });
 }
@@ -288,18 +293,50 @@ function handleWatchedBtns(haveUserWatchedBefore) {
   // Show next commercials if any
   if (commercialLeft != 0) showNextVideo();
   else {
+    // Turn Off User Camera and Hide It
+    turnOffUserCamera();
+    document.getElementById("cameraContainer").style.display = "none";
+    // Hide Commercial Iframe
     iframeMain.style.display = "none";
-    uploadTxt.innerHTML = "Video Kaydı Aktarılıyor...<br>Lütfen Bekleyin";
-    uploadTxt.style.display = "block";
+
+    uploadTxt.innerHTML = "Veriler Aktarılıyor...<br>Lütfen Bekleyin";
+    // Show Survey
+    userSurvey.style.display = "block";
     //TODO Post Survey To Server
     // postSurveyToServer(getSurveyData(watchedBefore));
   }
+}
+
+function handleUserSurvey(e) {
+  // Prevent Page Reload
+  e.preventDefault();
+
+  // Get User Answers From Survey
+  const userAnswers = {};
+  for (idx = 1; idx < 9; idx++) {
+    userAnswers[document.getElementById(`q${idx}`).innerHTML] = document.querySelector(
+      `input[name="q${idx}"]:checked`
+    ).value;
+  }
+
+  // Hide Survey After Post
+  userSurvey.style.display = "none";
+
+  // TODO show info text uploadtxt
+  uploadTxt.style.display = "block";
+
+  // TODO post 'userAnswers' to Server
+  // postSurveyToServer(userAnswers)
 }
 
 // 'Have User Watched Commercial Before' Buttons
 const watchedSurvey = document.getElementById("watchedSurvey");
 document.getElementById("yes-btn").addEventListener("click", () => handleWatchedBtns(true));
 document.getElementById("no-btn").addEventListener("click", () => handleWatchedBtns(false));
+
+// Survey to Display After all Commercials are Over
+const userSurvey = document.getElementById("userSurvey");
+userSurvey.addEventListener("submit", (e) => handleUserSurvey(e));
 
 const uploadTxt = document.getElementById("upload-txt");
 

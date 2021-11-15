@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
     <title>Video</title>
   </head>
   <body>
@@ -20,7 +21,7 @@
       </div>
       <!-- Camera and Emotion Buttons -->
       <div class="right">
-        <div class="cameraContainer">
+        <div id="cameraContainer" class="cameraContainer">
           <video class="camera" autoplay playsinline></video>
         </div>
         <div id="emotionBtns" class="emotionButtons">
@@ -39,6 +40,122 @@
           </div>
         </div>
       </div>
+      <!-- Survey to Display After all Commercials are Over -->
+      <form id="userSurvey" class="userSurvey">
+        <h1 class="surveyTitle">Anket Basligi</h1>
+        <!-- Question 1 -->
+        <div class="q-container">
+          <fieldset class="question">
+            <h2 id="q1" class="q-title">Gluten Alerjiniz var mı?</h2>
+            <label class="answer">
+              <input type="radio" name="q1" id="gluten-yes" value="yes" required="" />
+              <label for="gluten-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q1" id="gluten-no" value="no" />
+              <label for="gluten-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 2 -->
+          <fieldset class="question">
+            <h2 id="q2" class="q-title">Haftada Kaç Saat Oyun Oynarsınız?</h2>
+            <label class="answer">
+              <input type="radio" name="q2" id="game-zero" value="0" required="" />
+              <label for="game-zero">0</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q2" id="game-oneToFive" value="1-5" />
+              <label for="game-oneToFive">1-5</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q2" id="game-fiveToTen" value="5-10" />
+              <label for="game-fiveToTen">5-10</label>
+            </label>
+            <label>
+              <input type="radio" name="q2" id="game-tenPlus" value="10+" />
+              <label for="game-tenPlus">10+</label>
+            </label>
+          </fieldset>
+          <!-- Question 3 -->
+          <fieldset class="question">
+            <h2 id="q3" class="q-title">Reklamlar satın alma kararınızı etkiliyor mu?</h2>
+            <label class="answer">
+              <input type="radio" name="q3" id="buy-yes" value="yes" required="" />
+              <label for="buy-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q3" id="buy-no" value="no" />
+              <label for="buy-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 4 -->
+          <fieldset class="question">
+            <h2 id="q4" class="q-title">10 Kasım reklamları markaya bakış açınızı etkiler mi?</h2>
+            <label class="answer">
+              <input type="radio" name="q4" id="10Nov-yes" value="yes" required="" />
+              <label for="10Nov-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q4" id="10Nov-no" value="no" />
+              <label for="10Nov-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 5 -->
+          <fieldset class="question">
+            <h2 id="q5" class="q-title">Reklamlarda çocukların oynatılmasını onaylıyor musunuz?</h2>
+            <label class="answer">
+              <input type="radio" name="q5" id="children-yes" value="yes" required="" />
+              <label for="children-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q5" id="children-no" value="no" />
+              <label for="children-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 6 -->
+          <fieldset class="question">
+            <h2 id="q6" class="q-title">Şarjlı diş fırçası kullanıyor musunuz?</h2>
+            <label class="answer">
+              <input type="radio" name="q6" id="toothbrush-yes" value="yes" required="" />
+              <label for="toothbrush-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q6" id="toothbrush-no" value="no" />
+              <label for="toothbrush-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 7 -->
+          <fieldset class="question">
+            <h2 id="q7" class="q-title">Ne sıklıkla temizlik yapıyorsunuz?</h2>
+            <label class="answer">
+              <input type="radio" name="q7" id="cleaning-daily" value="daily" required="" />
+              <label for="cleaning-daily">Günlük</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q7" id="cleaning-weekly" value="weekly" />
+              <label for="cleaning-weekly">Haftalık</label>
+            </label>
+            <label>
+              <input type="radio" name="q7" id="cleaning-monthly" value="monthly" />
+              <label for="cleaning-monthly">Aylık</label>
+            </label>
+          </fieldset>
+          <!-- Question 8 -->
+          <fieldset class="question">
+            <h2 id="q8" class="q-title">Reklamların hiç gösterilmemesi için para öder misiniz?</h2>
+            <label class="answer">
+              <input type="radio" name="q8" id="paidForCommercials-yes" value="yes" required="" />
+              <label for="paidForCommercials-yes">Evet</label>
+            </label>
+            <label>
+              <input type="radio" name="q8" id="paidForCommercials-no" value="no" />
+              <label for="paidForCommercials-no">Hayır</label>
+            </label>
+          </fieldset>
+        </div>
+        <!-- Submit  -->
+        <button type="submit" id="submit-btn" class="submit-btn">Anketi Gönder</button>
+      </form>
     </div>
     <script src="js/commercials.js"></script>
   </body>
