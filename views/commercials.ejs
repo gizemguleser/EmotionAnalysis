@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
-    <title>Video</title>
+    <title>Reklamlar</title>
   </head>
   <body>
     <div class="container">
@@ -42,7 +42,7 @@
       </div>
       <!-- Survey to Display After all Commercials are Over -->
       <form id="userSurvey" class="userSurvey">
-        <h1 class="surveyTitle">Anket Basligi</h1>
+        <h1 class="surveyTitle">Anket</h1>
         <!-- Question 1 -->
         <div class="q-container">
           <fieldset class="question">
@@ -90,7 +90,7 @@
           </fieldset>
           <!-- Question 4 -->
           <fieldset class="question">
-            <h2 id="q4" class="q-title">10 Kasım reklamları markaya bakış açınızı etkiler mi?</h2>
+            <h2 id="q4" class="q-title">Kendinizi duygusal biri olarak değerlendirir misiniz?</h2>
             <label class="answer">
               <input type="radio" name="q4" id="10Nov-yes" value="yes" required="" />
               <label for="10Nov-yes">Evet</label>
@@ -102,7 +102,7 @@
           </fieldset>
           <!-- Question 5 -->
           <fieldset class="question">
-            <h2 id="q5" class="q-title">Reklamlarda çocukların oynatılmasını onaylıyor musunuz?</h2>
+            <h2 id="q5" class="q-title">Çocuklarla vakit geçirmeyi sever misiniz?</h2>
             <label class="answer">
               <input type="radio" name="q5" id="children-yes" value="yes" required="" />
               <label for="children-yes">Evet</label>
@@ -114,30 +114,38 @@
           </fieldset>
           <!-- Question 6 -->
           <fieldset class="question">
-            <h2 id="q6" class="q-title">Şarjlı diş fırçası kullanıyor musunuz?</h2>
+            <h2 id="q6" class="q-title">Şarjlı diş fırçası kullanmayı düşünür müsünüz?</h2>
             <label class="answer">
               <input type="radio" name="q6" id="toothbrush-yes" value="yes" required="" />
-              <label for="toothbrush-yes">Evet</label>
+              <label for="toothbrush-yes">Kesinlikle</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q6" id="toothbrush-whyNot" value="why-not" />
+              <label for="toothbrush-no">Olabilir</label>
             </label>
             <label>
-              <input type="radio" name="q6" id="toothbrush-no" value="no" />
-              <label for="toothbrush-no">Hayır</label>
+              <input type="radio" name="q6" id="toothbrush-never" value="never" />
+              <label for="toothbrush-no">Asla</label>
             </label>
           </fieldset>
           <!-- Question 7 -->
           <fieldset class="question">
-            <h2 id="q7" class="q-title">Ne sıklıkla temizlik yapıyorsunuz?</h2>
+            <h2 id="q7" class="q-title">Hangi sıklıkla dişçiye gidiyorsunuz?</h2>
             <label class="answer">
-              <input type="radio" name="q7" id="cleaning-daily" value="daily" required="" />
-              <label for="cleaning-daily">Günlük</label>
+              <input type="radio" name="q7" id="dentist-monthly" value="monthly" required="" />
+              <label for="dentist-monthly">Her ay</label>
             </label>
             <label class="answer">
-              <input type="radio" name="q7" id="cleaning-weekly" value="weekly" />
-              <label for="cleaning-weekly">Haftalık</label>
+              <input type="radio" name="q7" id="dentist-6months" value="6months" />
+              <label for="dentist-6months">6 ayda bir</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q7" id="dentist-1year" value="1year" />
+              <label for="dentist-1year">Yılda bir</label>
             </label>
             <label>
-              <input type="radio" name="q7" id="cleaning-monthly" value="monthly" />
-              <label for="cleaning-monthly">Aylık</label>
+              <input type="radio" name="q7" id="dentist-never" value="never" />
+              <label for="dentist-never">Hiç</label>
             </label>
           </fieldset>
           <!-- Question 8 -->
@@ -150,6 +158,50 @@
             <label>
               <input type="radio" name="q8" id="paidForCommercials-no" value="no" />
               <label for="paidForCommercials-no">Hayır</label>
+            </label>
+          </fieldset>
+          <!-- Question 9 -->
+          <fieldset class="question">
+            <h2 id="q9" class="q-title">Yakıtınızı hangi istasyondan alıyorsunuz?</h2>
+            <label class="answer">
+              <input type="radio" name="q9" id="gas-station-po" value="petrol-ofisi" required="" />
+              <label for="gas-station-po">Petrol ofisi</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q9" id="gas-station-shell" value="shell" />
+              <label for="gas-station-shell">Shell</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q9" id="gas-station-opet" value="opet" />
+              <label for="gas-station-opet">Opet</label>
+            </label>
+            <label>
+              <input type="radio" name="q9" id="gas-station-default" value="it-doesnt-matter" />
+              <label for="gas-station-default">Fark etmez</label>
+            </label>
+          </fieldset>
+          <!-- Question 10 -->
+          <fieldset class="question">
+            <h2 id="q10" class="q-title">En çok hangi tür filmlerden hoşlanırsınız?</h2>
+            <label class="answer">
+              <input type="radio" name="q10" id="movie-action" value="action" required="" />
+              <label for="movie-action">Aksiyon</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q10" id="movie-comedy" value="comedy" />
+              <label for="movie-comedy">Komedi</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q10" id="movie-horror" value="horror" />
+              <label for="movie-horror">Korku</label>
+            </label>
+            <label class="answer">
+              <input type="radio" name="q10" id="movie-romance" value="romance" />
+              <label for="movie-romance">Romantik</label>
+            </label>
+            <label>
+              <input type="radio" name="q10" id="movie-drama" value="drama" />
+              <label for="movie-drama">Dram</label>
             </label>
           </fieldset>
         </div>

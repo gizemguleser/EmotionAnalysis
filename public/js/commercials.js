@@ -293,7 +293,7 @@ function handleUserSurvey(e) {
     userUniqueID: getUserUniqueID(),
     surveyName: "userSurvey.json",
   };
-  for (idx = 1; idx < 9; idx++) {
+  for (idx = 1; idx <= 10; idx++) {
     userAnswers[document.getElementById(`q${idx}`).innerHTML] = document.querySelector(
       `input[name="q${idx}"]:checked`
     ).value;

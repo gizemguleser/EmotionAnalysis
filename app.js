@@ -83,7 +83,7 @@ const uploadS3 = multer({
   }),
   limits: {
     // Max Video Size
-    fileSize: 200000000, // 200000000 Bytes = 200 MB
+    fileSize: 100000000, // 200000000 Bytes = 200 MB
   },
 });
 
