@@ -175,7 +175,8 @@ function getRandomCommercialID(category) {
   // Get All Commercial Names in Given Category
   const commercialNames = Object.keys(category);
   // Select Random Commercial Name
-  const randomCommercialName = commercialNames[Math.floor(Math.random() * commercialNames.length)];
+  const randomCommercialName =
+    commercialNames[Math.floor(Math.random() * commercialNames.length)];
   // Get Selected Commercial ID with its Name
   const randomCommercialID = category[randomCommercialName];
   // Delete Selected Commercial, the Same Commercial Will Not be Shown Again
@@ -202,6 +203,8 @@ function showNextVideo() {
   // Update Commercial Source With Random Generated URL
   player.getIframe().src = videoURL();
   onYouTubeIframeAPIReady();
+  // Reset Emotion Buttons Color
+  resetEmotionBtnColor();
 }
 
 // Youtube Player API
@@ -262,6 +265,15 @@ function handleEmotionBtns(btn) {
     }
   } else {
     emotionTimes[btn.currentTarget.id] = parseInt(currentTime);
+  }
+
+  // Update button color
+  btn.currentTarget.style.backgroundColor = "#bb6339";
+}
+
+function resetEmotionBtnColor() {
+  for (let i = 0; i < emotionBtns.length; i++) {
+    emotionBtns[i].style.backgroundColor = "#202020";
   }
 }
 
