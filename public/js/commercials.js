@@ -269,6 +269,15 @@ function handleEmotionBtns(btn) {
 
   // Update button color
   btn.currentTarget.style.backgroundColor = "#bb6339";
+
+  // Reset button color
+  let color = setTimeout(function () {
+    resetCurrBtn(btn);
+  }, 3000);
+}
+
+function resetCurrBtn(e) {
+  e.target.style.backgroundColor = "#202020";
 }
 
 function resetEmotionBtnColor() {
